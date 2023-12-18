@@ -1,0 +1,60 @@
+services:
+  nest-app:
+    image: soho-back-nest
+    ports:
+      - "7777:7777"
+    environment:
+      POSTGRES_HOST: sohopg.cnrhy1vb00l0.eu-north-1.rds.amazonaws.com
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bAObTmGOMZpsrfPyNYTT
+      POSTGRES_DB: postgres
+      PMA_HOST: 84.38.189.63
+      PMA_USER: admin
+      PMA_PASSWORD: QxhziGcUknmCrdOKgYIR
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: l2srv-stable
+      MYSQL_USER: l2user
+      MYSQL_PASSWORD: www1337
+      PORT: 7777
+      FRONTEND_URL: https://soho.fan
+      DOMAIN: .soho.fan
+      JWT_ACCESS_TOKEN_SECRET: test and not test
+      JWT_ACCESS_TOKEN_EXPIRATION_TIME: 36000
+      JWT_REFRESH_TOKEN_SECRET: test test2
+      JWT_REFRESH_TOKEN_EXPIRATION_TIME: 7200
+      EMAIL_SERVICE: connect.smtp.bz
+      EMAIL_USER: nobody@soho.fan
+      EMAIL_PASSWORD: e7VWQSthvr22
+      JWT_VERIFICATION_TOKEN_SECRET: secret token for link
+      JWT_VERIFICATION_TOKEN_EXPIRATION_TIME: 21600
+      EMAIL_CONFIRMATION_URL: https://soho.fan/confirm-email
+      JWT_RESET_PASSWORD_TOKEN_SECRET: secret token for reset password
+      JWT_RESET_PASSWORD_TOKEN_EXPIRATION_TIME: 21600
+      RESET_PASSWORD_URL: https://soho.fan/?form=new-password
+      PUBLIC_STATIC_FILE_URL: https://backend.soho.fan/public
+      UPLOADED_FILES_DESTINATION: ./uploadedFiles
+      NODE_ENV: production
+      AWS_ACCESS_KEY_ID: AKIASNHNPCHYNLKE6Q4W
+      AWS_SECRET_ACCESS_KEY: 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
+      AWS_REGION: eu-north-1
+      AWS_S3_BUCKET_NAME: sohopublic
+      CRYPTOCLOUD_API_URL: https://api.cryptocloud.plus/v1/invoice
+      CRYPTOCLOUD_TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiTVRNd01qZz0iLCJ0eXBlIjoicHJvamVjdCIsInYiOiI2MjEwMzBiOWM4MGJlZTQ4ZjVlMDk0ZTg0MGY1NjJhNTBiOWVkMzAwNmViMTA4Yjg5NTU4ZDQyYWI5ZjhhOTM3IiwiZXhwIjo4ODA5MDExODIxNH0.Q4H4-oPfLZO-n9a7wPAnQWkc6_to_EVUKWWNS-kEz0w
+      CRYPTOCLOUD_SHOP_ID: EV1U5I9yp5IBcQc0
+      PAYPALYCH_API_URL: https://paypalych.com/api/v1
+      PAYPALYCH_TOKEN: 21761|6kyN1zWChFZDKZvrcOZ2jNGoDwxQL39GWC9WpyIf
+      PAYPALYCH_SHOP_ID: d1vx8gOvyj
+      ENOT_API_URL: https://api.enot.io/invoice
+      ENOT_SHOP_ID: 19a082ea-8c98-47b8-935e-f5d2b8eed3a0
+      ENOT_SECRET_KEY: 56da4fdf5764f1274e5158c08fa3b7e5035398fa
+      ENOT_MORE_KEY: ae173d099696f9f2ecb2190ae033967d7e24d24f
+      PRIME_API_URL: https://pay.primepayments.io/API/v2/
+      PRIME_TOKEN: hD8befH1x4
+      PRIME_SHOP_ID: 2899
+    network_mode: host
+    volumes:
+      - nest-app-data:/app/data  # Mount the named volume to a specific path inside the container
+
+volumes:
+  nest-app-data:

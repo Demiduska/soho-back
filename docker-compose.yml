@@ -1,0 +1,57 @@
+version: "3"
+services:
+  postgres:
+    container_name: postgresSoho
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - /data/postgres:/data/postgres
+    env_file:
+      - docker.env
+    networks:
+      - postgres
+
+  pgadmin:
+    links:
+      - postgres:postgres
+    container_name: pgadminSoho
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    volumes:
+      - /data/pgadmin:/root/.pgadmin
+    env_file:
+      - docker.env
+    networks:
+      - postgres
+
+  mysql:
+    container_name: mysqlSoho
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - /data/mysql:/var/lib/mysql
+    env_file:
+      - docker.env
+    networks:
+      - mysql
+
+  phpmyadmin:
+    links:
+      - mysql:mysql
+    container_name: phpmyadminSoho
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8181:80"
+    env_file:
+      - docker.env
+    networks:
+      - mysql
+
+networks:
+  postgres:
+    driver: bridge
+  mysql:
+    driver: bridge
